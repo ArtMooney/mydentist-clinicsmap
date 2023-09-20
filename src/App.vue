@@ -14,16 +14,30 @@
         class="map-object"
       >
         <GoogleMap
+          ref="mapRef"
           :api-key="apiKey"
           style="width: 100%; height: 100%"
-          :center="coords()"
-          :zoom="7"
+          :center="center"
+          :zoom="5.7"
         >
-          <Marker :options="{ position: coords() }" />
+          <Marker
+            v-for="(location, index) in listClinics.data"
+            :options="{
+              position: coords(location),
+              icon: 'https://filedn.eu/lXpklx4T9ArjUUtKzxsQ36h/mydentist/mydentist-icon.svg', // google needs complete served image url
+            }"
+            :key="index"
+            @click="handleMarker(index)"
+          />
         </GoogleMap>
       </div>
 
-      <div v-for="clinic of listClinics.data" class="map-contact-block">
+      <div
+        v-for="clinic of listClinics.data"
+        class="map-contact-block"
+        :ref="`${clinic.type}-${clinic.id}`"
+        :id="`${clinic.type}-${clinic.id}`"
+      >
         <div>
           <div class="map-contact-title">
             {{ clinic.attributes.clinic_city }}
@@ -92,10 +106,13 @@ export default {
       userPass: "QH5EV=2hNc*LFjJd",
       loaded: false,
       apiKey: import.meta.env.VITE_API_KEY,
+      center: { lat: 59, lng: 16 },
     };
   },
 
   async created() {
+    console.clear();
+
     this.listClinics = await this.getApiData(this.apiBaseUrl + this.getClinics);
     this.loaded = true;
     console.log("CLINICS", this.listClinics);
@@ -128,11 +145,20 @@ export default {
       });
     },
 
-    coords(coords) {
-      const lat = this.listClinics.data[0].attributes.latitude;
-      const lng = this.listClinics.data[0].attributes.longitude;
+    coords(location) {
+      const lat = location.attributes.latitude;
+      const lng = location.attributes.longitude;
 
       return { lat: Number(lat), lng: Number(lng) };
+    },
+
+    handleMarker(index) {
+      const clinic = this.listClinics.data[index];
+      const refElement = document.getElementById(`${clinic.type}-${clinic.id}`);
+
+      refElement.scrollIntoView({
+        behavior: "smooth",
+      });
     },
 
     handleMapArrow() {},
