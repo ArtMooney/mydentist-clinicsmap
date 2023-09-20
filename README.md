@@ -1,1 +1,1 @@
-# mydentist-clinicsmap
+# MyDentist - Clinicsmap
