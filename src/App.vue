@@ -113,6 +113,7 @@ export default {
   async created() {
     console.clear();
 
+    this.isApiKey();
     this.listClinics = await this.getApiData(this.apiBaseUrl + this.getClinics);
     this.loaded = true;
     console.log("CLINICS", this.listClinics);
@@ -159,6 +160,18 @@ export default {
       refElement.scrollIntoView({
         behavior: "smooth",
       });
+    },
+
+    isApiKey() {
+      // if apikey is missing you can enter it directly after url with a ? and then the key
+      if (!this.apiKey) {
+        const url = window.location.href;
+        const key = url.split("?")[1];
+
+        if (key) {
+          this.apiKey = key;
+        }
+      }
     },
 
     handleMapArrow() {},
