@@ -19,6 +19,7 @@
           style="width: 100%; height: 100%"
           :center="center"
           :zoom="5.7"
+          :styles="mapStyles"
         >
           <Marker
             v-for="(location, index) in listClinics.data"
@@ -93,6 +94,7 @@
 <script>
 import { GoogleMap, Marker } from "vue3-google-map";
 import chevronRightSolid from "./images/chevron-right-solid.vue";
+import mapStyles from "./mapstyles.json";
 
 export default {
   name: "App",
@@ -107,6 +109,7 @@ export default {
       loaded: false,
       apiKey: import.meta.env.VITE_API_KEY,
       center: { lat: 59, lng: 16 },
+      mapStyles,
     };
   },
 
