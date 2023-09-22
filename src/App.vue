@@ -163,9 +163,7 @@ export default {
       const clinic = this.listClinics.data[index];
       const refElement = document.getElementById(`${clinic.type}-${clinic.id}`);
 
-      refElement.scrollIntoView({
-        behavior: "smooth",
-      });
+      refElement.scrollIntoView({ behavior: "smooth", block: "center" });
     },
 
     handleMapArrow() {},
