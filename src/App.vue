@@ -104,10 +104,11 @@ export default {
     return {
       apiBaseUrl: "https://api.ngine.se/webhook/mydentist/",
       getClinics: "get-clinics",
+      getSettings: "get-settings",
       userName: "XkehuCfMZ!hU%8h=",
       userPass: "QH5EV=2hNc*LFjJd",
       loaded: false,
-      apiKey: import.meta.env.VITE_API_KEY,
+      apiKey: null,
       center: { lat: 59, lng: 16 },
       mapStyles,
     };
@@ -116,9 +117,11 @@ export default {
   async created() {
     console.clear();
 
-    this.isApiKey();
     this.listClinics = await this.getApiData(this.apiBaseUrl + this.getClinics);
+    const key = await this.getApiData(this.apiBaseUrl + this.getSettings);
+    this.apiKey = key["acf.string"];
     this.loaded = true;
+
     console.log("CLINICS", this.listClinics);
   },
 
@@ -163,18 +166,6 @@ export default {
       refElement.scrollIntoView({
         behavior: "smooth",
       });
-    },
-
-    isApiKey() {
-      // if apikey is missing you can enter it directly after url with a ? and then the key
-      if (!this.apiKey) {
-        const url = window.location.href;
-        const key = url.split("?")[1];
-
-        if (key) {
-          this.apiKey = key;
-        }
-      }
     },
 
     handleMapArrow() {},
