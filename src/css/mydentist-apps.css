@@ -553,6 +553,10 @@ a {
   position: relative;
 }
 
+.map-contact-block:hover {
+  background-color: #d6c9b8;
+}
+
 .map-contact-title {
   text-align: left;
   font-size: 1.4rem;
@@ -566,6 +570,7 @@ a {
 
 .map-arrow-right {
   width: 1rem;
+  transition: margin 0.2s;
 }
 
 .map-object {

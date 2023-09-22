@@ -172,3 +172,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.map-contact-block:hover .map-arrow-right {
+  margin-right: 1rem;
+}
+</style>
