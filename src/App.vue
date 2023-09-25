@@ -84,7 +84,7 @@
         <chevronRightSolid
           style="color: #9b1373"
           class="map-arrow-right"
-          @click="handleMapArrow"
+          @click="handleMapArrow(clinic)"
         />
       </div>
     </div>
@@ -115,14 +115,10 @@ export default {
   },
 
   async created() {
-    console.clear();
-
     this.listClinics = await this.getApiData(this.apiBaseUrl + this.getClinics);
     const key = await this.getApiData(this.apiBaseUrl + this.getSettings);
     this.apiKey = key["acf.string"];
     this.loaded = true;
-
-    console.log("CLINICS", this.listClinics);
   },
 
   methods: {
@@ -166,7 +162,21 @@ export default {
       refElement.scrollIntoView({ behavior: "smooth", block: "center" });
     },
 
-    handleMapArrow() {},
+    handleMapArrow(clinic) {
+      window.location.href =
+        window.location.origin +
+        "/" +
+        this.toUrl(clinic.attributes.clinic_city);
+    },
+
+    toUrl(str) {
+      str = str.toLowerCase();
+      str = str.replace(/å/g, "a");
+      str = str.replace(/ä/g, "a");
+      str = str.replace(/ö/g, "o");
+
+      return str;
+    },
   },
 };
 </script>

@@ -572,6 +572,7 @@ a {
 
 .map-arrow-right {
   width: 1rem;
+  cursor: pointer;
 }
 
 .map-object {
@@ -918,29 +919,29 @@ a {
 }
 
 /* @font-face {
-  font-family: "Fororounded";
-  src: url("../fonts/ForoRounded-Bold.otf") format("opentype");
+  font-family: 'Fororounded';
+  src: url('../fonts/ForoRounded-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Fororounded";
-  src: url("../fonts/ForoRounded-Light.otf") format("opentype");
+  font-family: 'Fororounded';
+  src: url('../fonts/ForoRounded-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Fororounded";
-  src: url("../fonts/ForoRounded-Italic.otf") format("opentype");
+  font-family: 'Fororounded';
+  src: url('../fonts/ForoRounded-Italic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: "Fororounded";
-  src: url("../fonts/ForoRounded-Regular.otf") format("opentype");
+  font-family: 'Fororounded';
+  src: url('../fonts/ForoRounded-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
