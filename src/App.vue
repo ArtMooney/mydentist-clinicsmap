@@ -165,7 +165,7 @@ export default {
     handleMapArrow(clinic) {
       window.location.href =
         window.location.origin +
-        "/" +
+        "/tandlakare/" +
         this.toUrl(clinic.attributes.clinic_city);
     },
 
