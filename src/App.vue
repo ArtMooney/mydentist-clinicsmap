@@ -38,6 +38,7 @@
         class="map-contact-block"
         :ref="`${clinic.type}-${clinic.id}`"
         :id="`${clinic.type}-${clinic.id}`"
+        @click="handleMapArrow(clinic)"
       >
         <div>
           <div class="map-contact-title">
@@ -81,11 +82,7 @@
             >
           </div>
         </div>
-        <chevronRightSolid
-          style="color: #9b1373"
-          class="map-arrow-right"
-          @click="handleMapArrow(clinic)"
-        />
+        <chevronRightSolid style="color: #9b1373" class="map-arrow-right" />
       </div>
     </div>
   </div>
