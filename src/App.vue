@@ -163,7 +163,9 @@ export default {
       window.location.href =
         window.location.origin +
         "/tandlakare/" +
-        this.toUrl(clinic.attributes.clinic_city);
+        this.toUrl(clinic.attributes.clinic_city) +
+        "?clinic=MyDentist%20" +
+        encodeURIComponent(clinic.attributes.clinic_city);
     },
 
     toUrl(str) {
