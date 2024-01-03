@@ -66,13 +66,7 @@
                   ? 'tel:' + clinic.attributes.clinic_phone_mobile
                   : ''
               "
-            >
-              {{
-                clinic.attributes.clinic_phone_mobile
-                  ? ", " + clinic.attributes.clinic_phone_mobile
-                  : ""
-              }}</a
-            >
+            ></a>
 
             <br />Mail:
             <a
